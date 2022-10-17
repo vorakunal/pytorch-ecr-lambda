@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM public.ecr.aws/docker/library/python:buster
 WORKDIR /app
 COPY . /app
 RUN pip3 install -r requirements.txt
