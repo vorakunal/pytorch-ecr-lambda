@@ -31,5 +31,6 @@ jobs:
         ECR_REPOSITORY: pytorch-lambda
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
-        docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
+        docker build -t pytorch-lambda .
+        docker tag pytorch-lambda:latest public.ecr.aws/i0x7y7a1/pytorch-lambda:latest
+        docker push public.ecr.aws/i0x7y7a1/pytorch-lambda:latest
