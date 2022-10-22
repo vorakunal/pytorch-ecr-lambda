@@ -17,7 +17,7 @@ RUN apt-get update && \
 
 # Copy function code
 RUN mkdir -p ${FUNCTION_DIR}
-COPY app/* ${FUNCTION_DIR}
+COPY . ${FUNCTION_DIR}
 
 # Install the function's dependencies
 RUN pip install \
