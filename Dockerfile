@@ -20,9 +20,9 @@ RUN mkdir -p ${FUNCTION_DIR}
 COPY . ${FUNCTION_DIR}
 
 # Install the function's dependencies
-RUN pip install \
-    --target ${FUNCTION_DIR} \
-        awslambdaric
+RUN pip install --target ${FUNCTION_DIR} \
+        awslambdaric && \
+        pip3 install -r requirements.txt
 
 
 FROM public.ecr.aws/docker/library/python:buster
