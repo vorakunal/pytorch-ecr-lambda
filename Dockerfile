@@ -19,6 +19,8 @@ RUN apt-get update && \
 RUN mkdir -p ${FUNCTION_DIR}
 COPY . ${FUNCTION_DIR}
 
+WORKDIR ${FUNCTION_DIR}
+
 # Install the function's dependencies
 RUN pip install --target ${FUNCTION_DIR} \
         awslambdaric && \
