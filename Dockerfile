@@ -1,5 +1,3 @@
-Dockerfile (to keep the image light we use a multi-stage build):
-
 # Define custom function directory
 ARG FUNCTION_DIR="/function"
 
