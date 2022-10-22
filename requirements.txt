@@ -4,3 +4,5 @@ pydub
 PyYAML
 torch
 torchaudio
+numpy
+scipy
