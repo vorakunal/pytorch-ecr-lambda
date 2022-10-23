@@ -15,7 +15,8 @@ print("hello")
 def lambda_handler(event, context):
     # TODO implement
     print("inside lambda_handler")
-    print("ins222222222ide lambda_handler")
+    print("Received event: " + json.dumps(event, indent=2))
+    print(event)
     bucket = event['Records'][0]['s3']['bucket']['name']
     
     key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
