@@ -37,6 +37,8 @@ WORKDIR ${FUNCTION_DIR}
 # Copy in the built dependencies
 COPY --from=build-image ${FUNCTION_DIR} ${FUNCTION_DIR}
 
+ENV TORCH_HOME /tmp
+
 ENTRYPOINT [ "/usr/local/bin/python", "-m", "awslambdaric" ]
 # CMD [ "app.handler" ]
 CMD ["lambda_function.lambda_handler"]
