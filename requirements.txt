@@ -6,3 +6,4 @@ torch
 torchaudio
 numpy
 scipy
+boto3
