@@ -35,7 +35,11 @@ def lambda_handler(event, context):
 
     tmp_filename = '/tmp/' + str(key)
     print(tmp_filename)
-    s3.download_file(bucket, key, tmp_filename)
+
+    with open(tmp_filename,'wb') as img_file:
+        s3.download_fileobj(bucket, key, img_file)
+
+    # s3.download_file(bucket, key, tmp_filename)
 
 
     test_files = glob(tmp_filename)
