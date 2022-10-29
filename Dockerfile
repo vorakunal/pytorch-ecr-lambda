@@ -1,7 +1,8 @@
 # Define custom function directory
 ARG FUNCTION_DIR="/function"
 
-FROM public.ecr.aws/docker/library/python:buster as build-image
+FROM public.ecr.aws/docker/library/python:3.8-bullseye as build-image
+
 
 # Include global arg in this stage of the build
 ARG FUNCTION_DIR
@@ -27,7 +28,7 @@ RUN pip install --target ${FUNCTION_DIR} \
         pip install --target ${FUNCTION_DIR} -r requirements.txt
 
 
-FROM public.ecr.aws/docker/library/python:buster
+FROM public.ecr.aws/docker/library/python:3.8-bullseye
 
 # Include global arg in this stage of the build
 ARG FUNCTION_DIR
