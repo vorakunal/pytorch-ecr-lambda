@@ -24,7 +24,7 @@ WORKDIR ${FUNCTION_DIR}
 # Install the function's dependencies
 RUN pip install --target ${FUNCTION_DIR} \
         awslambdaric && \
-        pip3 install --target ${FUNCTION_DIR} -r requirements.txt
+        pip install --target ${FUNCTION_DIR} -r requirements.txt
 
 
 FROM public.ecr.aws/docker/library/python:buster
