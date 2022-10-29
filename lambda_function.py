@@ -42,6 +42,7 @@ def lambda_handler(event, context):
     # s3.download_file(bucket, key, tmp_filename)
 
 
+
     test_files = glob(tmp_filename)
     batches = split_into_batches(test_files, batch_size=1)
     input = prepare_model_input(read_batch(batches[0]),
