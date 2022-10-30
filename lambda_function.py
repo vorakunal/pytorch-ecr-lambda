@@ -60,7 +60,7 @@ def lambda_handler(event, context):
     #inserting values into table
     response = table.put_item(
        Item={
-            'test1': outtext,
+            'test': outtext,
             
         }
     )
