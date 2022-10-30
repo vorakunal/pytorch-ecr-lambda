@@ -18,6 +18,8 @@ print("hello")
  read_audio, prepare_model_input) = utils
 
 s3 = boto3.client("s3")
+dynamodb = boto3.resource('dynamodb')
+    
 
 
 
@@ -50,5 +52,17 @@ def lambda_handler(event, context):
 
     output = model(input)
     for example in output:
-        print(decoder(example.cpu()))
+        outtext = decoder(example.cpu())
+        print(outtext)
+
+    #table name
+    table = dynamodb.Table('model_outputs')
+    #inserting values into table
+    response = table.put_item(
+       Item={
+            'test1': outtext,
+            
+        }
+    )
+    return response
     
