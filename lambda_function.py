@@ -64,5 +64,8 @@ def lambda_handler(event, context):
             
         }
     )
+
+    print("end lambda")
+    
     return response
     
