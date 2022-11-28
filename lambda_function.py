@@ -5,6 +5,7 @@ import torchaudio
 import urllib
 from glob import glob
 import boto3
+import time
 
 device = torch.device('cpu')  # gpu also works, but our models are fast enough for CPU
 
@@ -28,6 +29,9 @@ def lambda_handler(event, context):
     print("inside lambda_handler")
     print("Received event: " + json.dumps(event, indent=2))
     print(event)
+    if str(event['Records'][0]).find('sns') > 0:
+        event = json.loads(event['Records'][0]['Sns']['Message'])
+
     bucket = event['Records'][0]['s3']['bucket']['name']
     key = event['Records'][0]['s3']['object']['key']
 
@@ -38,10 +42,15 @@ def lambda_handler(event, context):
     tmp_filename = '/tmp/' + str(key)
     print(tmp_filename)
 
+    start_time = time.time()
+
+
     with open(tmp_filename,'wb') as img_file:
         s3.download_fileobj(bucket, key, img_file)
 
     # s3.download_file(bucket, key, tmp_filename)
+
+    print("Downloading time: --- %s seconds ---" % (time.time() - start_time))
 
 
 
